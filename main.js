@@ -12,6 +12,7 @@ if(localStorage.getItem('ethAddress')){
     document.querySelector('#wallet').textContent = localStorage.getItem('ethAddress')
     document.querySelector('#walletWrapper').style.display = "block"
     document.querySelector('.welcome').style.display = "block"
+    window.location.href = "http://localhost:5500/vanilla-casino/dashboard/"
 }
 
 /* AUTH ? Login = display-wallet : Logout = display-login */
@@ -24,7 +25,7 @@ async function login() {
       user = await Moralis.authenticate({
         signingMessage: "Log in using Moralis",
       })
-      .then(function (user) {
+      .then( async function (user) {
           console.log("logged in user:", user);
           console.log(user.get("ethAddress"));
           document.querySelector('#login_button').style.display = "none"
@@ -33,6 +34,10 @@ async function login() {
           localStorage.setItem('ethAddress',user.get('ethAddress'))
           document.querySelector('#walletWrapper').style.display = "block"
           document.querySelector('.welcome').style.display = "block"
+          user.set('msg','information about the user')
+          await user.save()
+          window.location.href = "http://localhost:5500/vanilla-casino/dashboard/"
+
         })
       .catch(function (error) {
           console.log(error);
@@ -49,14 +54,8 @@ async function logOut() {
   document.querySelector('#walletWrapper').style.display = "none"
   document.querySelector('.welcome').style.display = "none"
   console.log("logged out");
-
-
-
-
-
-
 }
 
-/** EVENTS */
+/** EVENTS LISTENER */
 document.querySelector('#login_button').onclick = login
 document.querySelector('#logout_button').onclick = logOut

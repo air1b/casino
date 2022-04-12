@@ -1,0 +1,474 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.88.1">
+    <title>W E L C O M E  T O   T H E  C A S I N O</title>
+
+
+    <!-- Bootstrap core CSS -->
+<link href="./dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+<script src="https://unpkg.com/moralis/dist/moralis.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display+SC&display=swap" rel="stylesheet">
+
+ <meta name="theme-color" content="#7952b3">
+
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+
+    
+    <!-- Custom styles for this template -->
+    <link href="./dashboard.css" rel="stylesheet">
+  </head>
+  <body>
+    
+<header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+  <a class="text-center navbar-brand col-md-3 col-lg-2 me-0 px-3" href="#">
+    <svg class="d-inline" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" style="height:30px;width:30px;min-height:30px; min-width:30px;"><path d="M0 0h512v512H0z" fill="#191c1f" fill-opacity="1"/><g class="" transform="translate(0,0)" style=""><path d="M255.76 44.764c-6.176 0-12.353 1.384-17.137 4.152L85.87 137.276c-9.57 5.536-9.57 14.29 0 19.826l152.753 88.36c9.57 5.536 24.703 5.536 34.272 0l152.753-88.36c9.57-5.535 9.57-14.29 0-19.825l-152.753-88.36c-4.785-2.77-10.96-4.153-17.135-4.153zm1.86 12.423a31.953 18.96 0 0 1 21.194 5.536 31.953 18.96 0 0 1-45.187 26.812 31.953 18.96 0 0 1 23.992-32.347zm-119.173 70.188a31.953 18.96 0 0 1 .002 0 31.953 18.96 0 0 1 21.195 5.535 31.953 18.96 0 0 1-45.19 26.813 31.953 18.96 0 0 1 23.992-32.348zm118.24.244a31.953 18.96 0 0 1 22.125 32.362 31.953 18.96 0 1 1-45.187-26.812 31.953 18.96 0 0 1 23.06-5.55zm119.663.015a31.953 18.96 0 0 1 .002 0 31.953 18.96 0 0 1 21.195 5.535 31.953 18.96 0 0 1-45.19 26.812 31.953 18.96 0 0 1 23.993-32.347zM75.67 173.84c-5.753-.155-9.664 4.336-9.664 12.28v157.696c0 11.052 7.57 24.163 17.14 29.69l146.93 84.848c9.57 5.526 17.14 1.156 17.14-9.895V290.76c0-11.052-7.57-24.16-17.14-29.688l-146.93-84.847c-2.69-1.555-5.225-2.327-7.476-2.387zm360.773.002c-2.25.06-4.783.83-7.474 2.385l-146.935 84.847c-9.57 5.527-17.14 18.638-17.14 29.69v157.7c0 11.05 7.57 15.418 17.14 9.89L428.97 373.51c9.57-5.527 17.137-18.636 17.137-29.688v-157.7c0-7.942-3.91-12.432-9.664-12.278zM89.297 195.77a31.236 18.008 58.094 0 1 33.818 41.183 31.236 18.008 58.094 1 1-45-25.98 31.236 18.008 58.094 0 1 11.182-15.203zm333.52 0A18.008 31.236 31.906 0 1 434 210.973a18.008 31.236 31.906 0 1-45 25.98 18.008 31.236 31.906 0 1 33.818-41.183zm-165.198 2.314a31.953 18.96 0 0 1 21.194 5.535 31.953 18.96 0 0 1-45.187 26.812 31.953 18.96 0 0 1 23.992-32.348zm109.198 30.018A18.008 31.236 31.906 0 1 378 243.305a18.008 31.236 31.906 0 1-45 25.98 18.008 31.236 31.906 0 1 33.818-41.183zm-165.52 32.332a31.236 18.008 58.094 0 1 33.817 41.183 31.236 18.008 58.094 1 1-45-25.98 31.236 18.008 58.094 0 1 11.182-15.203zm109.52 0A18.008 31.236 31.906 0 1 322 275.637a18.008 31.236 31.906 0 1-45 25.98 18.008 31.236 31.906 0 1 33.818-41.183zM89.298 318.48a31.236 18.008 58.094 0 1 33.817 41.184 31.236 18.008 58.094 1 1-45-25.98 31.236 18.008 58.094 0 1 11.182-15.204zm333.52 0A18.008 31.236 31.906 0 1 434 333.684a18.008 31.236 31.906 0 1-45 25.98 18.008 31.236 31.906 0 1 33.818-41.184zm-56 32.332A18.008 31.236 31.906 0 1 378 366.017a18.008 31.236 31.906 0 1-45 25.98 18.008 31.236 31.906 0 1 33.818-41.183zm-165.52 32.33a31.236 18.008 58.094 0 1 33.817 41.184 31.236 18.008 58.094 1 1-45-25.98 31.236 18.008 58.094 0 1 11.182-15.203zm109.52 0A18.008 31.236 31.906 0 1 322 398.347a18.008 31.236 31.906 0 1-45 25.98 18.008 31.236 31.906 0 1 33.818-41.183z" fill="white" fill-opacity="1"/></g></svg>
+    <div class="d-inline fw-bolder" style="font-family: 'Playfair Display SC',Arial">Casino<p class="d-inline small text-white" style="font-size:0.7em;vertical-align: top;">148</p></div>
+  </a>
+  <!-- <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button> -->
+  <!-- <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search"> -->
+  <div class="navbar-nav">
+    <div id="logout_button"  class="nav-item text-nowrap">
+      <a class="nav-link px-3" href="#">Sign out</a>
+    </div>
+  </div>
+</header>
+
+<div class="container-fluid">
+  <div class="row">
+    <!-- <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+      <div class="position-sticky pt-3">
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">
+              <span data-feather="home"></span>
+              Dashboard
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <span data-feather="file"></span>
+              Orders
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <span data-feather="shopping-cart"></span>
+              Products
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <span data-feather="users"></span>
+              Customers
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <span data-feather="bar-chart-2"></span>
+              Reports
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <span data-feather="layers"></span>
+              Integrations
+            </a>
+          </li>
+        </ul>
+
+        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+          <span>Saved reports</span>
+          <a class="link-secondary" href="#" aria-label="Add a new report">
+            <span data-feather="plus-circle"></span>
+          </a>
+        </h6>
+        <ul class="nav flex-column mb-2">
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <span data-feather="file-text"></span>
+              Current month
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <span data-feather="file-text"></span>
+              Last quarter
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <span data-feather="file-text"></span>
+              Social engagement
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <span data-feather="file-text"></span>
+              Year-end sale
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav> -->
+
+    <main class="col-md-6 px-md-4 mb-2">
+      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="h2">Random Number</h1>
+        <div class="btn-toolbar mb-2 mb-md-0">
+          <div class="btn-group me-2">
+            <!-- <button type="button" class="btn btn-sm btn-outline-secondary">Share</button> -->
+            <!-- <button type="button" class="btn btn-sm btn-outline-secondary">Export</button> -->
+          </div>
+          <!-- <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle"> -->
+            <!-- <span data-feather="calendar"></span> -->
+            <!-- This week -->
+          <!-- </button> -->
+        </div>
+      </div>
+
+      <div style="display:flex;align-items:center;justify-content:center;flex-direction: column;">
+        <div id="game" style="transform: scale(1.1);display:grid;place-items:center;text-align:center;">
+            <!-- <div style="font-weight:700;font-family: Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif, sans-serif;margin:auto;width:300px;font-size: xx-large;color:rgb(255, 83, 83);">The number is: </div> -->
+            <div id="number" style="display:flex;position:relative;max-width:300px;margin:auto;margin-top:0.2em;margin-bottom:0.2em;box-shadow:2px 2px 4px black;color:black;border-radius:10px;border:solid black 0px;padding:0 20px;font-size:10em;padding-bottom:15px;padding-left:15px;font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif, sans-serif">
+                <span>1</span>
+                <div style="position:absolute;top:0;left:5px;width:2px;height:2px;transform: scale(0.2);color:red;">♥</div>
+                <div style="position:absolute;bottom:40px;left:5px;width:2px;height:2px;transform: scale(0.2);color:red;">♥</div>
+                <div style="position:absolute;bottom:40px;right:28px;width:2px;height:2px;transform: scale(0.2);color:red;">♥</div>
+                <div style="position:absolute;top:0;right:28px;width:2px;height:2px;transform: scale(0.2);color:red;">♥</div>
+                <!-- <div id="number" style="position:absolute;top:45%;left:50%;transform: translate(-50%,-50%);">1</div> -->
+            </div>
+            <div style="width:fit-content;margin:0;margin:1.3em;padding:0;position:relative;">
+                <div id="choose" style="text-shadow:0px 0px 1px rgb(19, 192, 19); color:rgb(19, 192, 19);font-size:x-small;text-transform:uppercase;position:absolute;bottom:10px;left:6px;">
+                    <div style="font-size:10px; font-weight:800;font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">
+                        <span style="vertical-align: super;">b</span>
+                        <span>e</span>
+                        <span>t</span>
+                    </div>
+                </div>
+                <input style="width:80px;text-align:end;margin:0;font-size:2em;" type="number" min="1" max="7" value="1" id="bet" name="bet">
+            </div>
+    
+            <button id="start" style="font-family: Ubuntu,'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;cursor:pointer;overflow:hidden;margin:auto;display:block;position:relative;color:white;font-size:2em;font-weight:bold;background:rgb(255, 171, 61);padding:0.3em 1.2em;border:none;outline:none!important;box-shadow:black 2px 2px 2px!important;border-radius: 10px;">I bet !</button>
+    
+            <style>
+    
+                #number{
+                    transition:all 1s;
+                    margin:0;
+                    background-color: #ffffff;
+                }
+    
+                #choose::before{
+                    position:absolute;
+                    content:'choose a number >';
+                    display: inline-block;
+                    top:0px;
+                    left:-100px;
+                    color:red;
+                    text-transform: Capitalize;
+                    text-shadow:none;
+                    padding:0;
+                    -webkit-animation: blink-1 2s both infinite;
+                            animation: blink-1 2s both infinite;
+                }
+    
+                #choose div{
+                    position:relative;
+                    display:flex;
+                    padding:0;
+                    letter-spacing: 0em;
+                }
+                #choose div span{
+                    border:solid black 1px;
+                    padding:2px;
+                }
+    
+                #choose div span:nth-child(1){
+                    border:solid black 1px;
+                    padding:2px;
+                }
+                #choose div span:nth-child(0){
+                    border:solid black 1px;
+                    border-right:none;
+                    padding:2px;
+                }
+    
+                button[id=start]::after{
+                    position:absolute;
+                    content:' ';
+                    display:block;
+                    width:40px;
+                    height:110px;
+                    background:rgb(255, 44, 44);
+                    box-shadow:black 2px 2px 2px 1px;
+                    top:-30px;
+                    left:0;
+                    transform: skewX(-50deg);
+                }
+    
+                button[id=start]::before{
+                    display:flex;
+                    align-items: center;
+                    justify-content:center;
+                    position:absolute;
+                    text-align: center;
+                    content:'100% winner';
+                    color: white;
+                    font-size: 10px;
+                    display:block;
+                    width:10px;
+                    height:10px;
+                    top:50px;
+                    left:40px;
+                    transform:rotateZ(-38deg) translateX(-5px) translateY(-50px);
+                    z-index:2;
+                }
+    
+    
+                .blink-1 {
+                    -webkit-animation: blink-1 0.6s both;
+                            animation: blink-1 0.6s both;
+                }
+    
+    
+                @-webkit-keyframes blink-1 {
+                0%,
+                50%,
+                100% {
+                    opacity: 1;
+                }
+                25%,
+                75% {
+                    opacity: 0;
+                }
+                }
+                @keyframes blink-1 {
+                0%,
+                50%,
+                100% {
+                    opacity: 1;
+                }
+                25%,
+                75% {
+                    opacity: 0;
+                }
+                }
+    
+            </style>
+        </div>
+    
+        <style>
+            #win,#lose{
+                display:block;
+                position:fixed;
+                content:' ';
+                width:100vw;
+                height:100vh;
+                z-index:3;
+                background: #444444aa;
+                top: 0;
+                left: 0;
+            }
+            #modal{
+                display:block;
+                position:fixed;
+                content:'';
+                width:300px;
+                height:300px;
+                z-index:3;
+                background: #ffffff;
+                transform:translate(-50%,-50%);
+                top: 50%;
+                left:50%;
+                font-size:3em;
+                display:grid;
+                place-items: center;
+                box-shadow: greenyellow 4px 4px 8px 0px;
+                text-align: center;
+            }
+    
+            .d-none{
+                display:none;
+            }
+        </style>
+        <div>
+            <div class="modal" style="font-family: Ubuntu,Arial;border-radius: 10px;">
+                <!-- 😎 You win ! -->
+                <!-- 🤦‍♂️ You lose ! -->
+            </div>
+        </div>
+      </div>
+
+      <!-- <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas> -->
+
+      
+      
+    </main>
+
+    <div class="col-md-6 col-xs-12 px-md-4 mb-2 mt-3">
+      <h2>Rank</h2>
+      <hr>
+            <div class="table-responsive">
+              <table class="table table-striped table-sm">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Header</th>
+                    <th scope="col">Header</th>
+                    <th scope="col">Header</th>
+                    <th scope="col">Header</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>1,001</td>
+                    <td>random</td>
+                    <td>data</td>
+                    <td>placeholder</td>
+                    <td>text</td>
+                  </tr>
+                  <tr>
+                    <td>1,002</td>
+                    <td>placeholder</td>
+                    <td>irrelevant</td>
+                    <td>visual</td>
+                    <td>layout</td>
+                  </tr>
+                  <tr>
+                    <td>1,003</td>
+                    <td>data</td>
+                    <td>rich</td>
+                    <td>dashboard</td>
+                    <td>tabular</td>
+                  </tr>
+                  <tr>
+                    <td>1,003</td>
+                    <td>information</td>
+                    <td>placeholder</td>
+                    <td>illustrative</td>
+                    <td>data</td>
+                  </tr>
+                  <tr>
+                    <td>1,004</td>
+                    <td>text</td>
+                    <td>random</td>
+                    <td>layout</td>
+                    <td>dashboard</td>
+                  </tr>
+                  <tr>
+                    <td>1,005</td>
+                    <td>dashboard</td>
+                    <td>irrelevant</td>
+                    <td>text</td>
+                    <td>placeholder</td>
+                  </tr>
+                  <tr>
+                    <td>1,006</td>
+                    <td>dashboard</td>
+                    <td>illustrative</td>
+                    <td>rich</td>
+                    <td>data</td>
+                  </tr>
+                  <tr>
+                    <td>1,007</td>
+                    <td>placeholder</td>
+                    <td>tabular</td>
+                    <td>information</td>
+                    <td>irrelevant</td>
+                  </tr>
+                  <tr>
+                    <td>1,008</td>
+                    <td>random</td>
+                    <td>data</td>
+                    <td>placeholder</td>
+                    <td>text</td>
+                  </tr>
+                  <tr>
+                    <td>1,009</td>
+                    <td>placeholder</td>
+                    <td>irrelevant</td>
+                    <td>visual</td>
+                    <td>layout</td>
+                  </tr>
+                  <tr>
+                    <td>1,010</td>
+                    <td>data</td>
+                    <td>rich</td>
+                    <td>dashboard</td>
+                    <td>tabular</td>
+                  </tr>
+                  <tr>
+                    <td>1,011</td>
+                    <td>information</td>
+                    <td>placeholder</td>
+                    <td>illustrative</td>
+                    <td>data</td>
+                  </tr>
+                  <tr>
+                    <td>1,012</td>
+                    <td>text</td>
+                    <td>placeholder</td>
+                    <td>layout</td>
+                    <td>dashboard</td>
+                  </tr>
+                  <tr>
+                    <td>1,013</td>
+                    <td>dashboard</td>
+                    <td>irrelevant</td>
+                    <td>text</td>
+                    <td>visual</td>
+                  </tr>
+                  <tr>
+                    <td>1,014</td>
+                    <td>dashboard</td>
+                    <td>illustrative</td>
+                    <td>rich</td>
+                    <td>data</td>
+                  </tr>
+                  <tr>
+                    <td>1,015</td>
+                    <td>random</td>
+                    <td>tabular</td>
+                    <td>information</td>
+                    <td>text</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+      </div>
+  </div>
+</div>
+
+
+<script src="./dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+<script src="./main.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js" integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha" crossorigin="anonymous"></script><script src="dashboard.js"></script>
+<script src="./game.js"></script>
+
+</body>
+</html>

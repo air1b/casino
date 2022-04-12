@@ -15,4 +15,5 @@ async function logOut() {
 }
   
 /** EVENTS LISTENER */
+document.querySelector('.logout_button').onclick = logOut
 document.querySelector('#logout_button').onclick = logOut

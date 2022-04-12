@@ -57,6 +57,7 @@ function popDown(){
             subCoin.classList.add('d-none')
         }
 
+        mynumber.removeAttribute('disabled')
         clearTimeout(handleTimeout)
     } 
 }
@@ -141,7 +142,7 @@ function start(){
         isRunning = true
         rollNumber()
         stopper()
-
+        mynumber.setAttribute('disabled','true')
     }else{
         
     }

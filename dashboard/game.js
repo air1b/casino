@@ -90,7 +90,7 @@ function randomNumber(min, max) {
 
 /** change the number */
 function changeNumber(){
-    var random_number = randomNumber(1,7)
+    var random_number = randomNumber(1,2)
     number.innerHTML = random_number
     title.innerHTML = "who is it?-->"+emojis[random_number-1]
 }

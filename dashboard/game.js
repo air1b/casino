@@ -1,5 +1,7 @@
 /** @var */
-
+var audio = new Audio('drum.mp3');
+var loseSound = new Audio('lose.mp3');
+var winSound = new Audio('win.mp3');
 var isDown = false
 var elt = ''
 var modal = document.querySelector('.modal')
@@ -76,11 +78,15 @@ function showResult(){
 
     if(number.innerHTML == mynumber.value){
         elt = 'win'
-        popUp()
+        // popUp()
+        winSound.play()
+        handleTimeout = setTimeout(popUp,500)
         handleTimeout = setTimeout(popDown,5000)
     }else{
         elt = 'lose'
-        popUp()
+        // popUp()
+        loseSound.play()
+        handleTimeout = setTimeout(popUp,500)
         handleTimeout = setTimeout(popDown,5000)
     }
 
@@ -100,14 +106,15 @@ function rollNumber(){
 
 /** stop the game */
 function stopper(){
-    time = randomNumber(3,5) * 1000
+    time = 6000 
+    // randomNumber(3,5) * 1000
     handleTimeout = setTimeout(showResult,time)
 }
 
 /** start the game */
 function start(){
     if(!isRunning){
-        
+        audio.play()
         isRunning = true
         rollNumber()
         stopper()

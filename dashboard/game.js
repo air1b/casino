@@ -2,6 +2,9 @@
 var audio = new Audio('drum.mp3');
 var loseSound = new Audio('lose.mp3');
 var winSound = new Audio('win.mp3');
+
+var addCoin = document.querySelector('#addcoin') 
+var subCoin = document.querySelector('#subcoin') 
 var isDown = false
 var elt = ''
 var modal = document.querySelector('.modal')
@@ -45,6 +48,14 @@ function popDown(){
         modal.removeAttribute('id')
         modal.innerHTML = ''
         game.addEventListener('mouseover',addListeners)
+        if(elt == 'win'){
+            addCoin.classList.remove('slide-out-top')
+            addCoin.classList.add('d-none')
+        }else{
+            subCoin.classList.remove('slide-out-top')
+            subCoin.classList.add('d-none')
+        }
+
         clearTimeout(handleTimeout)
     } 
 }
@@ -59,6 +70,13 @@ function popUp(){
     modal.setAttribute('id','modal')
     var msg = elt == 'win' ? "😎 <br> You win !" : "🤦‍♂️ <br> You lose !"
     modal.innerHTML = msg
+    if(elt == 'win'){
+        addCoin.classList.remove('d-none')
+        addCoin.classList.add('slide-out-top')
+    }else{
+        subCoin.classList.remove('d-none')
+        subCoin.classList.add('slide-out-top')
+    }
     document.querySelector(`#${elt}`).addEventListener('click',clickPopDown)
 }
 

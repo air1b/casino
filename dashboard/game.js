@@ -1,5 +1,6 @@
 /** @var */
 var audio = new Audio('drum.mp3');
+var cymbalSound = new Audio('cymbal.mp3');
 var loseSound = new Audio('lose.mp3');
 var winSound = new Audio('win.mp3');
 
@@ -95,6 +96,7 @@ function changeNumber(){
 
 /** show the final result */
 function showResult(){
+    cymbalSound.play()
     clearInterval(handleInterval)
     clearTimeout(handleTimeout)
     startBtn.removeEventListener('click',start)

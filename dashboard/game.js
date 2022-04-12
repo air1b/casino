@@ -50,6 +50,11 @@ function popDown(){
 }
 
 function popUp(){
+    if(elt == 'win'){
+        winSound.play()
+    }else{
+        loseSound.play()
+    }
     modal.parentNode.setAttribute('id',`${elt}`)
     modal.setAttribute('id','modal')
     var msg = elt == 'win' ? "😎 <br> You win !" : "🤦‍♂️ <br> You lose !"
@@ -79,13 +84,11 @@ function showResult(){
     if(number.innerHTML == mynumber.value){
         elt = 'win'
         // popUp()
-        winSound.play()
         handleTimeout = setTimeout(popUp,500)
         handleTimeout = setTimeout(popDown,5000)
     }else{
         elt = 'lose'
         // popUp()
-        loseSound.play()
         handleTimeout = setTimeout(popUp,500)
         handleTimeout = setTimeout(popDown,5000)
     }

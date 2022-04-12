@@ -136,9 +136,9 @@
       </div>
     </nav> -->
 
-    <main class="col-md-6 px-md-4 mb-2">
-      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h1 class="h2">Random Number</h1>
+    <main class="col-md-6 pb-5 border" style="background:#0f6e3a">
+      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3">
+        <!-- <h1 class="h2 fs-1">Random Number</h1> -->
         <div class="btn-toolbar mb-2 mb-md-0">
           <div class="btn-group me-2">
             <!-- <button type="button" class="btn btn-sm btn-outline-secondary">Share</button> -->
@@ -170,10 +170,10 @@
                         <span>t</span>
                     </div>
                 </div>
-                <input style="width:80px;text-align:end;margin:0;font-size:2em;" type="number" min="1" max="7" value="1" id="bet" name="bet">
+                <input style="border:solid black 2px; border-radius:10px;outline:none;width:80px;text-align:end;margin:0;font-size:2em;" type="number" min="1" max="7" value="1" id="bet" name="bet">
             </div>
     
-            <button id="start" style="font-family: Ubuntu,'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;cursor:pointer;overflow:hidden;margin:auto;display:block;position:relative;color:white;font-size:2em;font-weight:bold;background:rgb(255, 171, 61);padding:0.3em 1.2em;border:none;outline:none!important;box-shadow:black 2px 2px 2px!important;border-radius: 10px;">I bet !</button>
+            <button id="start" style="font-family: Ubuntu,'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;cursor:pointer;overflow:hidden;margin:auto;display:block;position:relative;color:white;font-size:2em;font-weight:bold;background:rgb(20, 158, 7);padding:0.3em 1.2em;border:none;outline:none!important;box-shadow:black 2px 2px 2px!important;border-radius: 10px;">&nbsp;&nbsp;&nbsp;Bet</button>
     
             <style>
     
@@ -185,13 +185,13 @@
     
                 #choose::before{
                     position:absolute;
-                    content:'choose a number >';
+                    content:'Enter a number >';
                     display: inline-block;
                     top:0px;
-                    left:-100px;
+                    left:-90px;
                     color:red;
                     text-transform: Capitalize;
-                    text-shadow:none;
+                    text-shadow:rgb(255, 71, 101) 0px 0px 2px;
                     padding:0;
                     -webkit-animation: blink-1 2s both infinite;
                             animation: blink-1 2s both infinite;
@@ -298,8 +298,8 @@
                 display:block;
                 position:fixed;
                 content:'';
-                width:300px;
-                height:300px;
+                width:250px;
+                height:250px;
                 z-index:3;
                 background: #ffffff;
                 transform:translate(-50%,-50%);
@@ -308,7 +308,7 @@
                 font-size:3em;
                 display:grid;
                 place-items: center;
-                box-shadow: greenyellow 4px 4px 8px 0px;
+                box-shadow: #0f6e3a 4px 4px 8px 0px;
                 text-align: center;
             }
     
@@ -330,18 +330,17 @@
       
     </main>
 
-    <div class="col-md-6 col-xs-12 px-md-4 mb-2 mt-3">
-      <h2>Rank</h2>
-      <hr>
+    <div class="col-md-6 col-xs-12 px-md-4">
+      <h2 class="py-4">Rank</h2>
             <div class="table-responsive">
               <table class="table table-striped table-sm">
                 <thead>
                   <tr>
                     <th scope="col">#</th>
-                    <th scope="col">Header</th>
-                    <th scope="col">Header</th>
-                    <th scope="col">Header</th>
-                    <th scope="col">Header</th>
+                    <th scope="col">username</th>
+                    <th scope="col">wallet</th>
+                    <th scope="col">balance</th>
+                    <th scope="col"></th>
                   </tr>
                 </thead>
                 <tbody>

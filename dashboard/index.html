@@ -21,6 +21,9 @@
 
 
     <style>
+      html{
+        overflow-x: hidden;
+      }
       .bd-placeholder-img {
         font-size: 1.125rem;
         text-anchor: middle;
@@ -59,7 +62,10 @@
   <div class="row">
 
 
-    <main class="col-lg-6 pb-5" style="background:#0f6e3a">
+    <main class="col-lg-6 pb-5" style="background:#0f6e3a;background: rgb(159,189,165);
+    background: radial-gradient(circle, rgba(159,189,165,1) 0%, rgba(23,153,93,1) 100%);background: rgb(133,246,156);
+background: radial-gradient(circle, rgba(133,246,156,1) 0%, rgba(0,180,96,1) 100%);background: rgb(133,246,156);
+background: radial-gradient(circle, rgba(133,246,156,1) 0%, rgba(36,166,105,1) 100%);">
      
 
       <div class="vh-100" style="display:flex;align-items:center;justify-content:center;flex-direction: column;">
@@ -147,7 +153,7 @@
                 <input style="color:red;font-weight:bolder;border:solid black 2px; border-radius:10px;outline:none;width:60px;text-align:center;margin:0;font-size:2em;" type="number" min="1" max="6" value="1" id="bet" name="bet">
             </div>
     
-            <button id="start" style="font-family: Ubuntu,'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;cursor:pointer;overflow:hidden;margin:auto;display:block;position:relative;color:white;font-size:2em;font-weight:bold;background:rgb(20, 158, 7);padding:0.3em 1.2em;border:none;outline:none!important;box-shadow:black 2px 2px 2px!important;border-radius: 10px;">&nbsp;&nbsp;&nbsp;Bet</button>
+            <button id="start" class="btn btn-outline-success rounded-pill" style="font-family: Ubuntu,'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;cursor:pointer;overflow:hidden;margin:auto;display:block;position:relative;color:white;font-size:2em;font-weight:bold;padding:0.3em 1.2em;outline:none!important;border-radius: 10px;">Bet</button>
     
             <style>
     
@@ -163,10 +169,10 @@
                     display: inline-block;
                     top:0px;
                     left:-120px;
-                    color:red;
+                    color:rgba(255,128,124,1);
                     font-size:14px;
                     font-weight:600;
-                    text-shadow:rgb(255, 71, 101) 0px 0px 2px;
+                    text-shadow:rgba(255,128,124,1) 0px 0px 2px;
                     padding:0;
                     -webkit-animation: blink-1 3s both infinite;
                             animation: blink-1 3s both infinite;
@@ -193,7 +199,7 @@
                     padding:2px;
                 }
     
-                button[id=start]::after{
+                /* button[id=start]::after{
                     position:absolute;
                     content:' ';
                     display:block;
@@ -222,6 +228,18 @@
                     left:40px;
                     transform:rotateZ(-38deg) translateX(-5px) translateY(-50px);
                     z-index:2;
+                } */
+
+                button{
+                  transition:all 0.7s;
+                  background: rgb(255,128,124);
+                  background: radial-gradient(circle, rgba(255,128,124,1) 0%, rgba(255,87,82,1) 100%)!important;
+                  box-shadow: rgb(94, 134, 86) 2px 2px 2px 1px!important;
+                  margin-top:1px;
+                }
+                button:hover{
+                  box-shadow:rgb(95, 72, 72) 0px 0px 0px 0px!important;
+                  margin-top:3px;
                 }
     
     
@@ -347,9 +365,9 @@
       
     </main>
 
-    <div class="overflow-y-scroll col-lg-6 col-xs-12">
+    <div class="overflow-y-scroll col-lg-6 col-xs-12 py-4">
       <div class="d-flex flex-wrap mt-4">
-        <div class="h1 display-1  text-center m-auto my-0 mb-4  p-3" style="position:relative;font-family: 'Dynalight','Playfair Display SC', serif, 'Yanone Kaffeesatz', sans-serif; font-size:10em;">
+        <div class="h1 display-1  text-center m-auto my-0 mb-4  p-3" style="font-size:10vw;position:relative;font-family: 'Dynalight','Playfair Display SC', serif, 'Yanone Kaffeesatz', sans-serif; font-size:10em;">
           
           Roll Dice
           <style>
@@ -399,21 +417,18 @@
         <div class="container user">
           <div class="row">
             <div class="col-xs-12">          
-              <div class="card border-start border-4 mt-2 username">    
+              <div class="card border-start border-4 mt-2 username py-4">    
                 <div class="card-body d-flex flex-row align-items-center m-auto justify-content-center">
                   <div>
                     
                     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16"><path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/><path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/></svg>
                   </div>
                   <div class="card-title text-center d-flex align-items-center ms-2 mt-2 h4 text-truncate" style="vertical-align:middle;" contenteditable="true">Roucarnage</div>
-                  <div class="d-inline">
-                    <a class="logout_button btn btn-outline-danger rounded-pill m-2">Signout</a>
-                  </div>
                 </div>
 
                 <div class="col-xs-12">
                  <div class="row">
-                   <div class="col-6"><div class="card border border m-2 wallet">    
+                   <div class="col-lg-6"><div class="card border border m-2 wallet">    
                     <div class="card-body border-start border-warning border-3 d-flex flex-row align-items-center justify-content-between">
                       <div>
                         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-wallet2" viewBox="0 0 16 16">
@@ -423,7 +438,7 @@
                       <div class="card-title m-auto h6 text-truncate ps-1 ms-2" contenteditable="true">0xA66dEcA76069a61Ec6F97A8623d6b2D05f4784Ec<br><small class="text-muted fw-lighter text-start">wallet</small></div>
                     </div>
                   </div></div>
-                   <div class="col-6"><div class="card border m-2 balance">    
+                   <div class="col-lg-6"><div class="card border m-2 balance">    
                     <div class="border-start border-success border-3 card-body d-flex flex-row align-items-center justify-content-between">
                       <div>
                         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="32px" height="32px" viewBox="0 0 256 417" version="1.1" preserveAspectRatio="xMidYMid">
@@ -452,11 +467,21 @@
                       <div class="row">
                         <div class="col-6 border-end border-3">
                           <div class="h3 text-center text-decoration-underline">Won</div>
-                          <div class="h3 text-center text-success">+250</div>
+                          <div class="h3 text-center text-success" style="position: relative;"><div id="won" style="position:relative;height:20px;">0</div>
+
+                            <div id="winAnimation" class="text-success slide-out-top d-none" style="position:absolute;left:40%;top:0; font-weight: 900;">
+                              +1
+                            </div>
+                          </div>
                         </div>
                       <div class="col-6">
                         <div class="h3 text-center text-decoration-underline">Lose</div>
-                        <div class="h3 text-center text-danger">-42</div>
+                        <div class="h3 text-center text-danger" style="position:relative;z-index:0;"> <div id="lose" style="position:relative;height:20px;width:100%;background:transparent;">0</div>
+
+                          <div id="loseAnimation" class="text-danger slide-out-top d-none" style="position:absolute;left:40%;top:0; font-weight: 900;">
+                            -1
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>

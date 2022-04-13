@@ -4,6 +4,12 @@ var cymbalSound = new Audio('cymbal.mp3');
 var loseSound = new Audio('lose.mp3');
 var winSound = new Audio('win.mp3');
 
+/** lose, win animation */
+var winAnimation = document.querySelector('#winAnimation')
+var loseAnimation = document.querySelector('#loseAnimation')
+var partyWon = document.querySelector('#won')
+var partyLose = document.querySelector('#lose')
+
 /** dice */
 var dice = [
     document.querySelector('#one'),
@@ -64,9 +70,17 @@ function popDown(){
         if(elt == 'win'){
             addCoin.classList.remove('slide-out-top')
             addCoin.classList.add('d-none')
+            winAnimation.classList.remove('d-none')
+            partyWon.innerHTML = parseInt(partyWon.innerHTML) + 1
+            winSound.play()
+
+
         }else{
             subCoin.classList.remove('slide-out-top')
             subCoin.classList.add('d-none')
+            loseAnimation.classList.remove('d-none')
+            partyLose.innerHTML = parseInt(partyLose.innerHTML) + 1
+            loseSound.play()
         }
 
         mynumber.removeAttribute('disabled')
@@ -121,11 +135,15 @@ function showResult(){
         // popUp()
         handleTimeout = setTimeout(popUp,500)
         handleTimeout = setTimeout(popDown,5000)
+        winAnimation.classList.add('d-none')
+
     }else{
         elt = 'lose'
         // popUp()
         handleTimeout = setTimeout(popUp,500)
         handleTimeout = setTimeout(popDown,5000)
+        loseAnimation.classList.add('d-none')
+
     }
 
 
@@ -139,7 +157,7 @@ function showResult(){
 
 /** change the number all 40 ms */
 function rollNumber(){
-    handleInterval = setInterval(changeNumber,40)
+    handleInterval = setInterval(changeNumber,100)
 }
 
 /** stop the game */

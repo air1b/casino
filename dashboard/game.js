@@ -4,6 +4,18 @@ var cymbalSound = new Audio('cymbal.mp3');
 var loseSound = new Audio('lose.mp3');
 var winSound = new Audio('win.mp3');
 
+/** dice */
+var dice = [
+    document.querySelector('#one'),
+    document.querySelector('#two'),
+    document.querySelector('#three'),
+    document.querySelector('#four'),
+    document.querySelector('#five'),
+    document.querySelector('#six')
+];
+
+var lastFace = 1
+
 var addCoin = document.querySelector('#addcoin') 
 var subCoin = document.querySelector('#subcoin') 
 var isDown = false
@@ -90,8 +102,10 @@ function randomNumber(min, max) {
 
 /** change the number */
 function changeNumber(){
-    var random_number = randomNumber(1,2)
-    number.innerHTML = random_number
+    dice[lastFace-1].classList.add('d-none')
+    var random_number = randomNumber(1,6)
+    lastFace = number.innerHTML = random_number
+    dice[random_number-1].classList.remove('d-none')
     title.innerHTML = "who is it?-->"+emojis[random_number-1]
 }
 

@@ -367,7 +367,7 @@ background: radial-gradient(circle, rgba(133,246,156,1) 0%, rgba(36,166,105,1) 1
 
     <div class="overflow-y-scroll col-lg-6 col-xs-12 py-4">
       <div class="d-flex flex-wrap mt-4">
-        <div class="h1 display-1  text-center m-auto my-0 mb-4  p-3" style="font-size:10vw;position:relative;font-family: 'Dynalight','Playfair Display SC', serif, 'Yanone Kaffeesatz', sans-serif; font-size:10em;">
+        <div class="  text-center m-auto my-0 mb-4  p-3" style="font-size:10vw;position:relative;font-family: 'Dynalight','Playfair Display SC', serif, 'Yanone Kaffeesatz', sans-serif; font-size:min(20vw,120px);">
           
           Roll Dice
           <style>
@@ -417,8 +417,14 @@ background: radial-gradient(circle, rgba(133,246,156,1) 0%, rgba(36,166,105,1) 1
         <div class="container user">
           <div class="row">
             <div class="col-xs-12">          
-              <div class="card border-start border-4 mt-2 username py-4">    
-                <div class="card-body d-flex flex-row align-items-center m-auto justify-content-center">
+              <div class="card mt-2 username py-4  shadow shadow-4 bg bg-success px-4">    
+                <div class="card-body d-flex flex-row align-items-center m-auto justify-content-center text-white" style="postion:relative;">
+                  <div style="position:absolute;top:-40px;right:-20px">
+                    <img width="100" src="./assets/img/logo-dice.png" alt="">
+                  </div>
+                  <div style="position:absolute;top:-40px;left:-20px;transform: scaleX(-1);">
+                    <img width="100" src="./assets/img/logo-dice.png" alt="">
+                  </div>
                   <div>
                     
                     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16"><path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/><path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/></svg>
@@ -427,8 +433,8 @@ background: radial-gradient(circle, rgba(133,246,156,1) 0%, rgba(36,166,105,1) 1
                 </div>
 
                 <div class="col-xs-12">
-                 <div class="row">
-                   <div class="col-lg-6"><div class="card border border m-2 wallet">    
+                 <div class="row mb-4">
+                   <div class="col-lg-6"><div class="card border border m-2 wallet mx-4">    
                     <div class="card-body border-start border-warning border-3 d-flex flex-row align-items-center justify-content-between">
                       <div>
                         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-wallet2" viewBox="0 0 16 16">
@@ -438,7 +444,7 @@ background: radial-gradient(circle, rgba(133,246,156,1) 0%, rgba(36,166,105,1) 1
                       <div class="card-title m-auto h6 text-truncate ps-1 ms-2" contenteditable="true">0xA66dEcA76069a61Ec6F97A8623d6b2D05f4784Ec<br><small class="text-muted fw-lighter text-start">wallet</small></div>
                     </div>
                   </div></div>
-                   <div class="col-lg-6"><div class="card border m-2 balance">    
+                   <div class="col-lg-6"><div class="card border m-2 balance mx-4">    
                     <div class="border-start border-success border-3 card-body d-flex flex-row align-items-center justify-content-between">
                       <div>
                         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="32px" height="32px" viewBox="0 0 256 417" version="1.1" preserveAspectRatio="xMidYMid">

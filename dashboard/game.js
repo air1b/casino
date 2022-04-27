@@ -192,3 +192,29 @@ function addListeners(){
 
 /** remove this listener to avoid to make another party or to override the current game*/
 game.addEventListener('mouseover',addListeners)
+
+
+
+
+
+
+async function getAccount(){
+    console.log('get wallet address ');
+    console.log(localStorage.getItem('ethAddress'))
+    
+    const options = {
+        chain: "rinkeby",
+        address: localStorage.getItem('ethAddress')
+      };
+
+    const balances = await Moralis.Web3API.account.getTokenBalances(options);
+
+    console.log(balances + ' eth')
+}
+
+async function getWalletAddress(){
+
+    document.querySelector('#walletaddr span').textContent = localStorage.getItem('ethAddress')
+}
+
+document.querySelector('body').onready = getAccount

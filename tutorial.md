@@ -15,4 +15,7 @@
 ## Auth ( Metamask )
 - [X] login
 - [X] logout
-- 
+
+
+## TODO
+- [ ] fix bug show board : toggle d-none display the animation +1 or/and -1

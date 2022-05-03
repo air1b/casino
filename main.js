@@ -1,6 +1,7 @@
 /*** Credentials */
 const appId     = "67pH7x263gZazmpFRkslVZaKQcAlZnJl5ndBA4KE"
 const serverUrl = "https://f6zhfhsmzlag.usemoralis.com:2053/server"
+const server    = "http://localhost/casino"
 
 /*** RUN APP */
 Moralis.start({serverUrl,appId})
@@ -12,7 +13,7 @@ if(localStorage.getItem('ethAddress')){
     document.querySelector('#wallet').textContent = localStorage.getItem('ethAddress')
     document.querySelector('#walletWrapper').style.display = "block"
     document.querySelector('.welcome').style.display = "block"
-    window.location.href = "http://localhost:5500/vanilla-casino/dashboard/"
+    window.location.href = `${server}/dashboard`
 }
 
 /* AUTH ? Login = display-wallet : Logout = display-login */
@@ -36,7 +37,7 @@ async function login() {
           document.querySelector('.welcome').style.display = "block"
           user.set('msg','information about the user')
           await user.save()
-          window.location.href = "http://localhost:5500/vanilla-casino/dashboard/"
+          window.location.href = `${server}/dashboard`
 
         })
       .catch(function (error) {
